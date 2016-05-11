@@ -18,7 +18,7 @@ import com.example.sgdy.pulltorefresh.PullToRefreshViewPagerActivity;
 import com.example.sgdy.pulltorefresh.PullToRefreshWebView2Activity;
 import com.example.sgdy.pulltorefresh.PullToRefreshWebViewActivity;
 
-public class MainActivity extends ListActivity {
+public class PullToRefreshActivity extends ListActivity {
 
     public static final String[] options = { "ListView", "ExpandableListView", "GridView", "WebView", "ScrollView",
             "Horizontal ScrollView", "ViewPager", "ListView Fragment", "WebView Advanced", "ListView in ViewPager" };
