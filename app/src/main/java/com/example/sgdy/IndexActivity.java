@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.sgdy.customview.CustomViewActivity1;
+
 public class IndexActivity extends Activity {
 
     @Override
@@ -37,7 +39,13 @@ public class IndexActivity extends Activity {
         });
         findViewById(R.id.btn_full_sceen).setOnClickListener(v -> {
             //API16
-            startActivity(new Intent(this,FullActivity.class));
+            startActivity(new Intent(this, FullActivity.class));
+        });
+        findViewById(R.id.btn_object_animator).setOnClickListener(v -> {
+            startActivity(new Intent(this, FlipperActivity.class));
+        });
+        findViewById(R.id.btn_custom_1).setOnClickListener(v -> {
+            startActivity(new Intent(this, CustomViewActivity1.class));
         });
     }
 }

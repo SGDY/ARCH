@@ -44,5 +44,19 @@
             android:layout_height="wrap_content"
             android:text="全屏模式"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_object_animator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ObjectAnimator"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_custom_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CustomWidgets1"
+            android:textAllCaps="false" />
     </GridLayout>
 </HorizontalScrollView>
