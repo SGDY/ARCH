@@ -30,8 +30,11 @@
         <activity android:name=".pulltorefresh.PullToRefreshListInViewPagerActivity" />
         <activity android:name=".pulltorefresh.PullToRefreshHorizontalScrollViewActivity" />
         <activity android:name=".FullActivity" />
-        <activity android:name=".FlipperActivity" />
-        <activity android:name=".customview.CustomViewActivity1"></activity>
+        <activity android:name=".animator.FlipperActivity" />
+        <activity android:name=".customview.CustomViewActivity1" />
+        <activity android:name=".animator.AnimateActivity" />
+        <activity android:name=".animator.TransitionActivity1" />
+        <activity android:name=".animator.TransitionActivity2"></activity>
     </application>
 
 </manifest>

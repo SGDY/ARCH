@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.sgdy.animator.AnimateActivity;
+import com.example.sgdy.animator.FlipperActivity;
+import com.example.sgdy.animator.TransitionActivity1;
+import com.example.sgdy.animator.TransitionActivity2;
 import com.example.sgdy.customview.CustomViewActivity1;
 
 public class IndexActivity extends Activity {
@@ -42,10 +46,26 @@ public class IndexActivity extends Activity {
             startActivity(new Intent(this, FullActivity.class));
         });
         findViewById(R.id.btn_object_animator).setOnClickListener(v -> {
-            startActivity(new Intent(this, FlipperActivity.class));
+            Intent intent = new Intent(this, FlipperActivity.class);
+            //Intent.FLAG_ACTIVITY_NO_ANIMATION让用户看起来两个活动是一个的感
+            // 觉，阻止播放过渡动画
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         });
         findViewById(R.id.btn_custom_1).setOnClickListener(v -> {
             startActivity(new Intent(this, CustomViewActivity1.class));
+            //重写活动的过渡效果 overridePendingTransition有两个参数，第一个是启动下一个活动要播放的动画的ID，第二个
+            // 参数是关闭当前活动要播放的动画的ID
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         });
+        findViewById(R.id.btn_view_property_animation).setOnClickListener(v -> {
+            startActivity(new Intent(this, AnimateActivity.class));
+        });
+        findViewById(R.id.btn_layout_transition).setOnClickListener(v ->
+                //API11
+                startActivity(new Intent(this, TransitionActivity1.class)));
+        findViewById(R.id.btn_layout_transition2).setOnClickListener(v ->
+                //API11
+                startActivity(new Intent(this, TransitionActivity2.class)));
     }
 }

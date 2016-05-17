@@ -15,7 +15,7 @@
     <!-- 添加一个提升动画以显示在空中上升 -->
     <objectAnimator
         android:duration="800"
-        android:propertyName="rotationY"
+        android:propertyName="translationY"
         android:repeatCount="1"
         android:repeatMode="reverse"
         android:valueTo="-200"

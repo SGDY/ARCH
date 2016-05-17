@@ -58,5 +58,26 @@
             android:layout_height="wrap_content"
             android:text="CustomWidgets1"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_view_property_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ViewPropertyAnimation"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_layout_transition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LayoutTransition"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_layout_transition2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LayoutTransition2"
+            android:textAllCaps="false" />
     </GridLayout>
 </HorizontalScrollView>
