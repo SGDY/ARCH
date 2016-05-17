@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.sgdy.animator.FlipperActivity;
+import com.example.sgdy.animator.LoadingAnimActivity;
 import com.example.sgdy.customview.CustomViewActivity1;
 
 public class IndexActivity extends Activity {
@@ -46,6 +48,9 @@ public class IndexActivity extends Activity {
         });
         findViewById(R.id.btn_custom_1).setOnClickListener(v -> {
             startActivity(new Intent(this, CustomViewActivity1.class));
+        });
+        findViewById(R.id.loading_anim_1).setOnClickListener(v -> {
+            startActivity(new Intent(this, LoadingAnimActivity.class));
         });
     }
 }

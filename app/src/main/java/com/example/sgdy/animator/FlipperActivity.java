@@ -1,4 +1,4 @@
-package com.example.sgdy;
+package com.example.sgdy.animator;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import com.example.sgdy.R;
 
 public class FlipperActivity extends Activity {
 
