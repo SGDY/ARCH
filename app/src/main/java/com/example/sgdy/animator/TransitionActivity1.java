@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 
 import com.example.sgdy.R;
 
+/**
+ * 添加视图 android默认的效果
+ */
 public class TransitionActivity1 extends Activity {
 
     LinearLayout mContainer;

@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import com.example.sgdy.R;
 
+/**
+ * View显示和隐藏视图
+ */
 public class AnimateActivity extends Activity {
 
     View viewToAnimate;

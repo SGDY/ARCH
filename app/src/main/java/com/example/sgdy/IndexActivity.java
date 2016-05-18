@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.sgdy.animator.AnimateActivity;
-import com.example.sgdy.animator.FlipperActivity;
+import com.example.sgdy.animator.ObjectAnimatorActivity1;
+import com.example.sgdy.animator.ObjectAnimatorActivity2;
 import com.example.sgdy.animator.LoadingAnimActivity;
 import com.example.sgdy.animator.TransitionActivity1;
 import com.example.sgdy.animator.TransitionActivity2;
@@ -47,7 +48,14 @@ public class IndexActivity extends Activity {
             startActivity(new Intent(this, FullActivity.class));
         });
         findViewById(R.id.btn_object_animator).setOnClickListener(v -> {
-            Intent intent = new Intent(this, FlipperActivity.class);
+            Intent intent = new Intent(this, ObjectAnimatorActivity1.class);
+            //Intent.FLAG_ACTIVITY_NO_ANIMATION让用户看起来两个活动是一个的感
+            // 觉，阻止播放过渡动画
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        });
+        findViewById(R.id.btn_object_animator2).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ObjectAnimatorActivity2.class);
             //Intent.FLAG_ACTIVITY_NO_ANIMATION让用户看起来两个活动是一个的感
             // 觉，阻止播放过渡动画
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -12,10 +12,9 @@ import android.widget.ImageView;
 
 import com.example.sgdy.R;
 
-public class FlipperActivity extends Activity {
+public class ObjectAnimatorActivity1 extends Activity {
 
     private boolean mIsHeads;
-    private ObjectAnimator mFilpper;
     private AnimatorSet animatorSet;
     private Bitmap mHeadsImage, mTailsImage;
     private ImageView mFilpImage;
@@ -33,6 +32,7 @@ public class FlipperActivity extends Activity {
         mIsHeads = true;
 
         animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.flip);
+        //设置目标组件
         animatorSet.setTarget(mFilpImage);
         ObjectAnimator flipAnimator = (ObjectAnimator) animatorSet.getChildAnimations().get(0);
         flipAnimator.addUpdateListener(animation -> {
@@ -42,31 +42,15 @@ public class FlipperActivity extends Activity {
                 mIsHeads = false;
             }
             if (animation.getAnimatedFraction() >= 0.75f && !mIsHeads) {
-                mFilpImage.setImageBitmap(mHeadsImage);
+                mFilpImage.setImageBitmap(mTailsImage);
                 mIsHeads = true;
             }
         });
-/*        //沿着Y轴旋转
-        mFilpper = ObjectAnimator.ofFloat(mFilpImage, "rotationX", 0f, 360f);
-        mFilpper.setDuration(500);
-        //addUpdateListener动画运行过程中的常规回调方法
-        mFilpper.addUpdateListener(animation -> {
-            //animation.getAnimatedFraction()返回当前动画完成的百分比
-            if (animation.getAnimatedFraction() >= 0.25f && mIsHeads) {
-                mFilpImage.setImageBitmap(mHeadsImage);
-                mIsHeads = false;
-            }
-            if (animation.getAnimatedFraction() >= 0.75f && !mIsHeads) {
-                mFilpImage.setImageBitmap(mHeadsImage);
-                mIsHeads = true;
-            }
-        });*/
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            mFilpper.start();
             animatorSet.start();
             return true;
         }

@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 
 import com.example.sgdy.R;
 
+/**
+ * 添加视图 自定义的效果
+ */
 public class TransitionActivity2 extends Activity {
 
     LinearLayout mContainer;
