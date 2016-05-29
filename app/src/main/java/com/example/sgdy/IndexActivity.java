@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.sgdy.animator.AnimateActivity;
+import com.example.sgdy.animator.LoadingAnimActivity;
 import com.example.sgdy.animator.ObjectAnimatorActivity1;
 import com.example.sgdy.animator.ObjectAnimatorActivity2;
-import com.example.sgdy.animator.LoadingAnimActivity;
 import com.example.sgdy.animator.TransitionActivity1;
 import com.example.sgdy.animator.TransitionActivity2;
 import com.example.sgdy.customview.CustomViewActivity1;
+import com.example.sgdy.photo.SelectPhotoActivity;
 
 public class IndexActivity extends Activity {
 
@@ -79,5 +80,10 @@ public class IndexActivity extends Activity {
         findViewById(R.id.btn_layout_transition2).setOnClickListener(v ->
                 //API11
                 startActivity(new Intent(this, TransitionActivity2.class)));
+
+        findViewById(R.id.btn_photo_select).setOnClickListener(v -> {
+            //
+            startActivity(new Intent(this, SelectPhotoActivity.class));
+        });
     }
 }

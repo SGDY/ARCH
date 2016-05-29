@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sgdy">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -36,7 +38,9 @@
         <activity android:name=".animator.AnimateActivity" />
         <activity android:name=".animator.TransitionActivity1" />
         <activity android:name=".animator.TransitionActivity2" />
-        <activity android:name=".animator.ObjectAnimatorActivity2"></activity>
+        <activity android:name=".animator.ObjectAnimatorActivity2" />
+        <activity android:name=".photo.SelectPhotoActivity" />
+        <activity android:name=".photo.type1.SelectPhotoActivity1"></activity>
     </application>
 
 </manifest>
