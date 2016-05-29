@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--tileMode（平铺）属性：
+
+它的效果为让背景用同一张图重复使用铺满整个画布，而不是一张图拉伸后铺满整个画布。它有三个属性值：
+
+repeat:重复使用 原位图会在横向和纵向两个方向重复地平铺;
+
+mirror:和repeat相似，不同的是每两行图以镜面倒映的方式显示  （原位图会重复地平铺，但按照原位图和镜像位图交替的方式平铺）
+
+clamp: 保持原图不变 复制原位图的边缘像素--><!--src只可以使用有固定边界的位图 例如外部图片 而XML形状不能作为Drawable模式的原位图-->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/android"
+    android:tileMode="repeat" />
