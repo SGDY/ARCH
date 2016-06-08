@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 import com.example.sgdy.animator.AnimateActivity;
 import com.example.sgdy.animator.LoadingAnimActivity;
@@ -12,6 +13,7 @@ import com.example.sgdy.animator.ObjectAnimatorActivity2;
 import com.example.sgdy.animator.TransitionActivity1;
 import com.example.sgdy.animator.TransitionActivity2;
 import com.example.sgdy.customview.CustomViewActivity1;
+import com.example.sgdy.http.MultipartActivity;
 import com.example.sgdy.photo.SelectPhotoActivity;
 
 public class IndexActivity extends Activity {
@@ -85,5 +87,7 @@ public class IndexActivity extends Activity {
             //
             startActivity(new Intent(this, SelectPhotoActivity.class));
         });
+        findViewById(R.id.btn_multipart).setOnClickListener(v ->
+                startActivity(new Intent(this, MultipartActivity.class)));
     }
 }

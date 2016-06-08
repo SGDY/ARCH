@@ -1,7 +1,9 @@
 package com.example.sgdy.http;
 
+import android.util.Base64;
 import android.util.Log;
 
+import com.android.sgdy.coreutil.CommonUtil;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -32,7 +34,7 @@ public class MultipartRequest extends Request<String> {
 
     MultipartEntityBuilder mBuilder = MultipartEntityBuilder.create();
     HttpEntity mHttpEntity;
-    private static final String FILE_PART_NAME = "file";
+    private static final String FILE_PART_NAME = "memberFace";
 
     private final Response.Listener<String> mListener;
     private final File mFilePart;
@@ -58,7 +60,9 @@ public class MultipartRequest extends Request<String> {
         //NOTE: 1、添加图片
         if (mFilePart != null) {
 //            mEntity.addPart(FILE_PART_NAME, new FileBody(mFilePart));
-            mBuilder.addBinaryBody(FILE_PART_NAME, mFilePart, ContentType.create("image/jpg"), mFilePart.getName());
+//            mBuilder.addBinaryBody(FILE_PART_NAME, mFilePart, ContentType.create("image/jpg,image/png"), mFilePart.getName());
+            mBuilder.addBinaryBody(FILE_PART_NAME, Base64.encode(CommonUtil.getBase64String(mFilePart).getBytes(),Base64.DEFAULT));
+//            mBuilder.addTextBody(FILE_PART_NAME, Base64.encodeToString(CommonUtil.getBase64String(mFilePart).getBytes(),Base64.DEFAULT));
         }
         //NOTE: 2、添加字符串部分--转化成utf-8编码
         if (mStringPart != null) {
