@@ -1,0 +1,10 @@
+1、Android程序的设计讲究逻辑和视图分离，因此不推荐在活动中直接编写界面。
+2、每个Intent中只能指定一个action，但却能指定多个category。
+3、setResult()方法接收两个参数，一般只使用RESULT_OK或RESULT_CANCELED。
+4、android:theme可以使用系统内置的很多主题，比如@android:style/Theme.Dialog对话框样式的主题，也可以定制自己的主题。
+5、android:maxLines指定了最大行数，当输入的内容超过最大行数时，文本就会向上滚动。
+6、ProgressDialog和AlertDialog有点类似，都可以在界面上弹出一个对话框，都能够屏蔽掉其他控件的交互能力。不同的是，ProgressDialog会在对话框中显示一个进度条。
+7、android:layout_gravity当LinearLayout的排列方向是horizontal时，只有垂直方向上的对齐方式才会生效，因为此时水平方向的长度是不固定的，每添加一个控件，
+ 水平方向上的长度都会改变，因而无法指定该方向上的对齐方式。同样的道理，当LinearLayout的排列方向是vertical时，只有水平方向上的对齐方式才会生效。
+8、当一个控件去引用另一个控件的id时，该控件一定要定义在引用控件的后面，不然会出现找不到id的情况。
+9、TableRow中的控件是不能指定宽度的，android:layout_span="2"表明占据两列的空间。android:stretchColumns表示如果表格不能完全占满屏幕宽度，就拉伸列。

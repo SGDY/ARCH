@@ -3,8 +3,10 @@ package com.example.sgdy;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
+import com.android.sgdy.coreutil.LogUtil;
 import com.example.sgdy.animator.AnimateActivity;
 import com.example.sgdy.animator.LoadingAnimActivity;
 import com.example.sgdy.animator.ObjectAnimatorActivity1;
@@ -85,5 +87,18 @@ public class IndexActivity extends Activity {
             //
             startActivity(new Intent(this, SelectPhotoActivity.class));
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        LogUtil.i("onBackPressed");
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            LogUtil.i("onKeyDown");
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

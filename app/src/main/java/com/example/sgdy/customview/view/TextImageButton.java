@@ -1,4 +1,4 @@
-package com.example.sgdy.customview;
+package com.example.sgdy.customview.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -1,0 +1,3 @@
+Android方法中返回值的含义
+
+    1、onCreateOptionsMenu():返回true表示允许创建的菜单显示出来，返回false，创建的菜单将无法显示。

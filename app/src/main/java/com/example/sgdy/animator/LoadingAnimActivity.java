@@ -10,6 +10,7 @@ import com.example.sgdy.R;
 
 /**
  * Created by 上官丹意 on 2016/05/17 08:22.
+ * 帧动画
  */
 public class LoadingAnimActivity extends Activity {
 
