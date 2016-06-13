@@ -23,7 +23,7 @@ public class TitleLayout extends LinearLayout {
         btnLeft.setOnClickListener(v -> ((Activity) getContext()).finish());
         Button btnRight = (Button) findViewById(R.id.btn_right);
         btnRight.setOnClickListener(v -> {
-            
+
         });
     }
 }
