@@ -9,6 +9,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.sgdy.coreutil.LogUtil;
 import com.example.sgdy.R;
 
 import java.io.File;
@@ -60,9 +61,19 @@ public class CameraActivity2 extends Activity implements SurfaceHolder.Callback
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         Camera.Parameters params = mCamera.getParameters();
         //得到设备支持的尺寸，并选择第一个尺寸（最大）
-        List<Camera.Size> sizes = params.getSupportedPreviewSizes();
-        Camera.Size selected = sizes.get(0);
+        List<Camera.Size> sizes = params.getSupportedPreviewSizes();//params.getSupportedPictureSizes()
+        for (Camera.Size size : sizes) {
+            LogUtil.i(size.width + " --- " + size.height);
+        }
+
+        Camera.Size selected = sizes.get(2);
         params.setPreviewSize(selected.width, selected.height);
+
+        List<Camera.Size> sizePictures = params.getSupportedPictureSizes();
+        for (Camera.Size size : sizePictures) {
+            LogUtil.i(size.width + " <==> " + size.height);
+        }
+        params.setPictureSize(sizePictures.get(2).width,sizePictures.get(2).height);
         //要想旋转摄像头输出的数据，需要调用Camera.Parameters的setRotation()方法。这个方法的实现效果取决于设备。
         //也许会旋转实际输出的图像，也许会通过旋转参数更新EXIF数据，或者两者皆有。
 //        params.setRotation(0);
