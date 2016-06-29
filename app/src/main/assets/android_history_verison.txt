@@ -1,0 +1,34 @@
+周一：Monday
+周二：Tuesday
+周三：Wednesday
+周四：Thursday
+周五：Friday
+周六：Saturday
+周日：Sunday
+
+一月 Jan. January
+二月 Feb. February
+三月 Mar. March
+四月 Apr. April
+五月 May
+六月 Jun  June
+七月 Jul. July Jy.
+八月 August Aug
+九月 Sep Sept. September
+十月 Oct. October
+十一月 Nov. November
+十二月 Dec December
+
+1.0	September 23, 2008	1
+1.1	February 9, 2009	2
+Cupcake（纸杯蛋糕）	1.5	April 27, 2009	3
+Donut（甜甜圈）	1.6	September 15, 2009	4
+Eclair（松饼）	2.0–2.1	October 26, 2009	5–7
+Froyo（冻酸奶）	2.2–2.2.3	May 20, 2010	8
+Gingerbread（姜饼）	2.3–2.3.7	December 6, 2010	9–10
+Honeycomb[a]（蜂巢）	3.0–3.2.6	February 22, 2011	11–13
+Ice Cream Sandwich（冰激凌三明治）	4.0–4.0.4	October 18, 2011	14–15
+Jelly Bean（果冻豆）	4.1–4.3.1	July 9, 2012	16–18
+KitKat（奇巧巧克力）	4.4–4.4.4, 4.4W–4.4W.2	October 31, 2013	19–20
+Lollipop(棒棒糖)	5.0–5.1.1	November 12, 2014	21–22
+Marshmallow(棉花糖)	6.0–6.0.1	October 5, 2015	23
