@@ -1,0 +1,181 @@
+Bitmap是Android系统中的图像处理的最重要类之一。用它可以获取图像文件信息，进行图像剪切、旋转、缩放等操作，并可以指定格式保存图像文件。
+
+Bitmap实现在android.graphics包中。但是Bitmap类的构造函数是私有的，外面并不能实例化，只能是通过JNI实例化。
+这必然是某个辅助类提供了创建Bitmap的接口，而这个类的实现通过JNI接口来实例化Bitmap的，这个类就是BitmapFactory。
+====================================================================================================
+利用BitmapFactory可以从一个指定文件中，利用decodeFile()解出Bitmap；也可以定义的图片资源中，利用decodeResource()解出Bitmap。
+1、assets目录加载
+AssetManager am = getAssets();
+InputStream is = am.open("high_pixel_img.jpg");
+Bitmap bitmap = BitmapFactory.decodeStream(is);
+
+2、Resources资源加载
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.high_pixel_img);
+
+3、sdcard文件加载
+String file_name = Environment.getExternalStorageDirectory().toString()+"/"+"high_pixel_img.jpg";
+nbsp;Bitmap bitmap = BitmapFactory.decodeFile(file_name);
+
+4、网络加载
+  String website = "http://www.baidu.com/img/baidu_sylogo1.gif";
+  URL image_url = new URL(website);
+  HttpURLConnection conn = (HttpURLConnection) image_url.openConnection();
+  conn.connect();
+  InputStream is = conn.getInputStream();
+  bitmap = BitmapFactory.decodeStream(is);
+
+在使用方法decodeFile()/decodeResource()时，都可以指定一个BitmapFacotry.Options。
+利用Options的下列属性，可以指定decode的选项：
+Option 参数类：
+
+public boolean inJustDecodeBounds ——如果设置为 true ，不获取图片，不分配内存，但会返回图片的高宽度信息。
+（如果设置为true，并不会把图像的数据完全解码，亦即decodeXyz()返回值为null，但是Options的outAbc中解出了图像的基本信息。）
+
+inPreferredConfig 指定decode到内存中，手机中所采用的编码，可选值定义在Bitmap.Config中。缺省值是ARGB_8888。
+
+public int inSampleSize ——图片缩放的倍数。如果设为 4 ，则宽和高都为原来的 1/4 ，则图是原来的 1/16 。
+public int outWidth ——获取图片的宽度值
+public int outHeight ——获取图片的高度值
+public int inDensity——用于位图的像素压缩比
+public int inTargetDensity ——用于目标位图的像素压缩比（要生成的位图）
+public boolean inScaled ——设置为 true 时进行图片压缩，从 inDensity 到 inTargetDensity 。
+
+读取一个文件路径得到一个位图。如果指定文件为空或者不能解码成文件，则返回 NULL 。
+public static Bitmap decodeFile(String pathName, Options opts)
+public static Bitmap decodeFile(String pathName)
+读取一个资源文件得到一个位图。如果位图数据不能被解码，或者 opts 参数只请求大小信息时，则返回 NuLL 。
+（即当 Options.inJustDecodeBounds=true, 只请求图片的大小信息。）
+
+先设置inJustDecodeBounds= true，调用decodeFile()得到图像的基本信息
+利用图像的宽度（或者高度，或综合）以及目标的宽度，得到inSampleSize值，再设置inJustDecodeBounds= false，调用decodeFile()得到完整的图像数据
+
+public staticBitmap decodeResource(Resources res, int id)
+public staticBitmap decodeResource(Resources res, int id, Options opts)
+
+从输入流中解码位图
+public static Bitmap decodeStream(InputStream is)
+
+从字节数组中解码生成不可变的位图
+public staticBitmap decodeByteArray(byte[] data, int offset, int length)
+====================================================================================================
+BitmapDrawable 类：
+继承于 Drawable ，你可以从文件路径、输入流、 XML 文件以及 Bitmap 中创建。
+
+常用的构造函数：
+Resources res = getResources();// 获取资源
+public BitmapDrawable(Resources res) ——创建一个空的 drawable
+（Resources 用来指定初始时所用的像素密度）替代 public BitmapDrawable() 方法（此方法不处理像素密度）
+public BitmapDrawable(Resources res, Bitmap bitmap)——从位图创建绘制
+public BitmapDrawable(Resources res, String filepath)——通过打开agiven文件路径和位图解码创建绘制
+public BitmapDrawable(Resources res, java.io.InputStream is)——创建一个可绘制从给定的输入流bydecoding位图。
+
+====================================================================================================
+用源Bitmap通过变换生成新的Bitmap的方法：
+public static Bitmap createBitmap(Bitmap src)  ——以 src 为原图生成不可变得新图像
+public static Bitmap createBitmap(int width, int height, Config config) ——创建指定格式、大小的位图
+public static Bitmap createBitmap(Bitmap source, int x, int y, intwidth, int height, Matrix m, boolean filter)
+public static Bitmap createBitmap(Bitmap source, int x, int y, intwidth, int height)
+以 source 为原图，创建新的图片，指定起始坐标以及新图像的高宽。
+public static Bitmap createScaledBitmap(Bitmap src, int dstWidth,int dstHeight,boolean filter)
+ ——以 src 为原图，创建新的图像，指定新图像的高宽以及是否变。
+第一个方法是最终的实现，后两种只是对第一种方法的封装。
+第二个方法可以从源Bitmap中指定区域(x,y, width, height)中挖出一块来实现剪切；
+第三个方法可以把源Bitmap缩放为dstWidth x dstHeight的Bitmap。
+
+设置Matrix的Rotate（通过setRotate()）或者Scale（通过setScale()），传入第一个方法，可实现旋转或缩放。
+====================================================================================================
+经过图像变换之后的Bitmap里的数据可以保存到图像压缩文件里（JPG/PNG）。
+public boolean  compress(Bitmap.CompressFormat  format, int quality,  OutputStream  stream)压缩
+
+format可设置JPEG或PNG格式；
+quality可选择压缩质量；0-100。 0含义压缩为小尺寸，100压缩的意思为最大质量。(PNG是无损的，对于 PNG 等无损格式的图片，会忽略此项设置）
+stream: OutputStream中写入压缩数据。
+return 是否成功压缩到指定的流。
+
+public void recycle()—— 回收位图占用的内存空间，把位图标记为 Dead
+public final boolean isRecycled() —— 判断位图内存是否已释放
+public final int getWidth()—— 获取位图的宽度
+public final int getHeight()—— 获取位图的高度
+public final boolean isMutable()—— 图片是否可修改
+public int getScaledWidth(Canvas canvas)—— 获取指定密度转换后的图像的宽度
+public int getScaledHeight(Canvas canvas)—— 获取指定密度转换后的图像的高度
+public boolean compress(CompressFormat format, int quality, OutputStreamstream)
+—— 按指定的图片格式以及画质，将图片转换为输出流。
+format ： Bitmap.CompressFormat.PNG 或 Bitmap.CompressFormat.JPEG
+
+====================================================================================================
+Drawable转化成Bitmap
+Drawable drawable = getResources().getDrawable(R.drawable.ic_launcher);
+Bitmap bitmap = Bitmap.createBitmap(
+                               drawable.getIntrinsicWidth(),
+                               drawable.getIntrinsicHeight(),
+                               drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                                               : Bitmap.Config.RGB_565);
+Canvas canvas = new Canvas(bitmap);
+//canvas.setBitmap(bitmap);
+drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+drawable.draw(canvas);
+====================================================================================================
+Bitmap转换成Drawable
+Drawable drawable = new BitmapDrawable(bitmap);
+====================================================================================================
+Bitmap转换成byte[]
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.high_pixel_img);
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+byte[] info = baos.toByteArray();
+====================================================================================================
+byte[]转换成Bitmap
+Bitmap bitmap = BitmapFactory.decodeByteArray(byte, 0, b.length);
+====================================================================================================
+InputStream转换成Bitmap
+InputStream is  = getResources().openRawResource(id);
+Bitmap bitmap = BitmaoFactory.decodeStream(is);
+====================================================================================================
+InputStream转换成byte[]
+InputStream is = getResources().openRawResource(id);//也可以通过其他方式接收一个InputStream对象
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+byte[] b = new byte[1024*2];
+int len = 0;
+while ((len = is.read(b, 0, b.length)) != -1)
+{
+   baos.write(b, 0, len);
+   baos.flush();
+}
+byte[] bytes = baos.toByteArray();
+====================================================================================================
+转换Bitmap大小
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.high_pixel_img);
+Bitmap target = Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
+Canvas canvas = new Canvas(tartget);
+canvas.scale(scale,scale);
+Paint paint = new Pain(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
+canvas.drawBitmap(bitmap,0,0,paint);
+bitmap.recycle();
+====================================================================================================
+将Bitmap保存为本地文件
+String filename = "save.jpg";
+File file = new File(Environmnet.getExternalStorageDirectory,filename);
+try{
+    OutputStream os  =  new FileOutputString(file);
+    bitmap.compress(CompressFormat.JPEG,100,os);
+}catch(FileNotFoundException e){
+   e.printStackTrace();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
