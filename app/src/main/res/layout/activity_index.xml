@@ -121,5 +121,12 @@
             android:layout_height="wrap_content"
             android:text="Camera2"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permission"
+            android:textAllCaps="false" />
     </GridLayout>
 </HorizontalScrollView>

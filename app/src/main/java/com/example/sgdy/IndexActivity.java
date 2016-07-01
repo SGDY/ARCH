@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 
 import com.android.sgdy.coreutil.LogUtil;
 import com.example.sgdy.animator.AnimateActivity;
@@ -18,6 +17,7 @@ import com.example.sgdy.camera.CameraActivity1;
 import com.example.sgdy.camera.CameraActivity2;
 import com.example.sgdy.customview.CustomViewActivity1;
 import com.example.sgdy.http.MultipartActivity;
+import com.example.sgdy.permission.PermissionActivity;
 import com.example.sgdy.photo.SelectPhotoActivity;
 
 public class IndexActivity extends Activity {
@@ -95,6 +95,7 @@ public class IndexActivity extends Activity {
                 startActivity(new Intent(this, MultipartActivity.class)));
         findViewById(R.id.btn_camera1).setOnClickListener(v -> startActivity(new Intent(this, CameraActivity1.class)));
         findViewById(R.id.btn_camera2).setOnClickListener(v -> startActivity(new Intent(this, CameraActivity2.class)));
+        findViewById(R.id.btn_permission).setOnClickListener(v -> startActivity(new Intent(this, PermissionActivity.class)));
     }
 
     @Override
